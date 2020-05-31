@@ -3,13 +3,40 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Snake Game</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <style>
+            body{
+                background-color: white;
+                font-family: 'Courier New', Courier, monospace;
+                color: aqua;
+            }
+            .image{
+                max-height:70vh;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                margin-top:2rem;
+                padding:2rem;
+            }
+            h2{
+                text-align:center;
+                font-size:2rem;
+            }
+            #board{
+                background-image: url("assets/snake.jpg");
+                height: 800px;
+                width: 800px;
+            }
+        </style>
     </head>
     <body>
-        <canvas id = "board" ></canvas>
+        <h2>Snaky Shaky</h2>
+        <div class = "image">
+            <canvas id = "board"></canvas>
+        </div>
         <script src="app.js" async defer></script>
     </body>
 </html>

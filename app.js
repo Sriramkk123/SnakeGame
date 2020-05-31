@@ -1,7 +1,8 @@
+var score = 0;
 function init() {
     var canvas = document.getElementById('board');
-    var score = 0;
-    W = H = canvas.width = canvas.height = 500;
+    H = canvas.height = 520;
+    W = canvas.width = 1000;
     pen = canvas.getContext('2d');
     cell_size  = 30;
     food = getRandomFood();
@@ -64,7 +65,7 @@ function init() {
 
             var last_x = Math.round(W/cell_size);
             var last_y = Math.round(H/cell_size);
-            if(this.cells[0].x < 0 || this.cells[0].y < 0 || this.cells[0].x > last_x || this.cells[0].y > last_y){
+            if(this.cells[0].x < 0 || this.cells[0].y < 0 || this.cells[0].x >= last_x || this.cells[0].y >= last_y){
                 game_over = true;
             }
         }
@@ -94,9 +95,9 @@ function draw() {
     snake.drawSnake();
     pen.fillStyle = food.color;
     pen.drawImage(food_img,food.x*cell_size,food.y*cell_size,cell_size,cell_size);
-    //pen.drawImage(score_img,18,20,cell_size,cell_size);
+    pen.drawImage(score_img,20,20,cell_size+10,cell_size+10);
     pen.font = "20px Roboto";
-    //pen.fillText(score,cell_size,cell_size);
+    pen.fillText(score,35,40);
 }
 function getRandomFood(){
     foodX = Math.round(Math.random()*((W-cell_size)/cell_size));
@@ -116,7 +117,7 @@ function update() {
 function gameloop() {
     if(game_over === true){
         clearInterval(f);
-        alert("Its Over!");
+        alert(`Congratulations! Your score is ${score}`);
         return;
     }
     draw();
